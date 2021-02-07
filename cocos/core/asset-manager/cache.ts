@@ -50,6 +50,7 @@ export default class Cache<T = any> {
      * @param map - An object used to initialize
      *
      */
+    
     constructor (map?: Record<string, T>) {
         if (map) {
             this._map = map;
@@ -234,3 +235,39 @@ export default class Cache<T = any> {
         this._map = null;
     }
 }
+
+
+
+
+
+/**
+ * null 和 undefined 类型的学习 
+ * 
+ * --strick  严格类型检查选项开启包含下面选项和其他选项的开启
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 类型检查器认为 null与 undefined可以赋值给任何类型
+ *      tsconfig.json 配置        
+ * 
+ *   例： let s:string=null  
+ *         这样是不予许的 因为 null  不是string类型
+ * 
+ *       可以使用联合类型  let str:string|null=null;   
+ *               
+ *      但是   let str:string|null|=undefined;  是不行的
+ *       这样是可以的   let str:string|null|undefined=undefined;
+ * 
+ *              
+ * 
+ * 
+ * 
+ *    this.属性名！
+ *    + ！表示的意思是：
+ *         手动去除属性的类型null 和 undefined
+ *         
+ *      
+ */

@@ -72,10 +72,18 @@ export function urlAppendTimestamp (url: string, append: boolean): string {
 
 export type RetryFunction = (times: number, done: CompleteCallback) => void;
 
+/**
+ * 重试机制
+ * @param process 
+ * @param times  重试次数
+ * @param wait  间隔都久时间重试
+ * @param onComplete 
+ * @param index  当前重试次数
+ */
 export function retry (process: RetryFunction, times: number, wait: number, onComplete: CompleteCallback, index = 0) {
     process(index, (err, result) => {
         index++;
-        if (!err || index > times) {
+        if (!err || index > times) {//no err or more than retryCount(超过重试次数)
             if (onComplete) {
                 onComplete(err, result);
             }
